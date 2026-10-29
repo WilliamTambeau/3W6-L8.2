@@ -1,28 +1,49 @@
-﻿{
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "launchBrowser": true,
+      "launchUrl": "https://localhost:7086",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "StagingPerf",
+        "ASPNETCORE_URLS": "https://localhost:7086;http://localhost:5086"
+      },
+      "distributionName": ""
+    },
+    "StagingPerf": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "StagingPerf"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7086;http://localhost:5086"
+    },
+    "Production": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7086;http://localhost:5086"
+    },
+    "Development": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7086;http://localhost:5086"
+    }
+  },
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:19687",
       "sslPort": 44328
-    }
-  },
-  "profiles": {
-    "ZombieParty": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:7086;http://localhost:5086",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
     }
   }
 }
