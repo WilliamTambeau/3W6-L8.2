@@ -17,10 +17,13 @@ namespace ZombieParty.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.8")
+                .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("ZombieParty.Models.Weapon", b =>
                 {
@@ -28,7 +31,7 @@ namespace ZombieParty.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -70,38 +73,6 @@ namespace ZombieParty.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Weapon");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedDate = new DateTime(1999, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "This is to cut your friendly zombies",
-                            Force = 200m,
-                            Image = "https://i.ibb.co/y5nCnXT/dagger-gfce31e967-1920.png",
-                            Lifespan = 50m,
-                            Name = "Leopold",
-                            Price = 421m,
-                            Qty = 21,
-                            QtyBought = 3,
-                            Resistance = 10m,
-                            UpdatedDate = new DateTime(2012, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreatedDate = new DateTime(1999, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Description = "An awesome Stainless Steel Shield",
-                            Force = 10m,
-                            Image = "https://publicdomainvectors.org/photos/Shield-ClassicMedieval1.png",
-                            Lifespan = 10m,
-                            Name = "Master Shield",
-                            Price = 500m,
-                            Qty = 30,
-                            QtyBought = 1,
-                            Resistance = 800m,
-                            UpdatedDate = new DateTime(2012, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("ZombieParty.Models.Zombie", b =>
@@ -110,7 +81,7 @@ namespace ZombieParty.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Force")
                         .HasColumnType("int");
@@ -137,71 +108,6 @@ namespace ZombieParty.Migrations
                     b.HasIndex("ZombieTypeId");
 
                     b.ToTable("Zombie");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Force = 20,
-                            Name = "LeChuck",
-                            Point = 5,
-                            ShortDesc = "description",
-                            ZombieTypeId = 3
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Force = 20,
-                            Name = "Lenore",
-                            Point = 4,
-                            ShortDesc = "description",
-                            ZombieTypeId = 3
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Force = 20,
-                            Name = "Draugr",
-                            Point = 2,
-                            ShortDesc = "description",
-                            ZombieTypeId = 4
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Force = 20,
-                            Name = "Ragamuffin",
-                            Point = 5,
-                            ShortDesc = "description",
-                            ZombieTypeId = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Force = 20,
-                            Name = "Taxidermy",
-                            Point = 1,
-                            ShortDesc = "description",
-                            ZombieTypeId = 4
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Force = 20,
-                            Name = "chien de l'enfer",
-                            Point = 7,
-                            ShortDesc = "description",
-                            ZombieTypeId = 3
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Force = 20,
-                            Name = "Avogadro",
-                            Point = 9,
-                            ShortDesc = "description",
-                            ZombieTypeId = 3
-                        });
                 });
 
             modelBuilder.Entity("ZombieParty.Models.ZombieType", b =>
@@ -210,7 +116,7 @@ namespace ZombieParty.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Point")
                         .HasColumnType("int");
@@ -222,32 +128,6 @@ namespace ZombieParty.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ZombieType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Point = 1,
-                            TypeName = "Virus"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Point = 3,
-                            TypeName = "Contact"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Point = 3,
-                            TypeName = "Fiction"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Point = 5,
-                            TypeName = "Légendaire"
-                        });
                 });
 
             modelBuilder.Entity("ZombieParty.Models.Zombie", b =>
